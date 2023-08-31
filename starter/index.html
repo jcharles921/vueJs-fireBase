@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <title>Learning VueJs</title>
+    <style>
+        .box{
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+        .color{
+            background-color: aqua;
+        }
+        img{
+            width:30%;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+            align-items: center;}
+        li{ 
+            list-style: none;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: 400px;
+        }
+        .fav{
+            background-color: #e286dc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello VueJs 😄 </h1>
+    <div id="app">
+        <h1>Hello charles  from template</h1>
+        <h2><a v-bind:href="url">{{title}}</a></h2>
+        <h2>Just a number {{number}}</h2>
+        <button v-on:click="number++">up</button>
+        <br>
+        <button @click="down">down</button>
+       
+        <br>
+        <div @mouseover="handlerEvent($event,5)" @mouseleave="removeColor" class="box">mouseover</div>
+        <div @mouseleave="handlerEvent"  @mouseover="removeColor" class="box">mouseleave</div>
+        <div @dblclick="handlerEvent" class="box">double click</div>
+        <div @mousemove="handleMouve" class="box">mouse position {{x}},{{y}} </div>
+        <br>
+        <button @click="show">{{revel}} secret</button>
+        <div v-if="isOtaku">I love mangas</div>
+        <div v-show="isOtaku" >
+            <h3>My extra favorite mangas {{favoriteMangas}} </h3>
+           
+            <ul>
+                <li v-for="manga in mangas" :class="{fav: manga.isFav}" @click="like($event,manga)">
+                   <h3 > {{manga.name}} from {{manga.author}} <img :src="manga.img" alt="manga.name"> </h3>
+                </li>
+
+            </ul>
+
+            and bo... i mean beer😄
+        </div>
+        </div>
+    </div>
+<script src="app.js"></script>
+</body>
+</html>
