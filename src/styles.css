@@ -185,6 +185,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 33%;
+  }
+  .options span:hover{
+    cursor: pointer;
+    color:#57ddff
   }
   .underline{
     text-decoration: line-through;
@@ -194,6 +199,9 @@
   }
   .clear{
     display: none;
+  }
+  .current{
+    color:#57ddff
   }
 
   #app {

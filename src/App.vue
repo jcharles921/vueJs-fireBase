@@ -48,7 +48,9 @@
 
         <div class="footer">
           <div class="bt-left">{{ toDoList.length }} items left</div>
-          <div class="options">All Active Completed</div>
+          <div class="options">
+            <span @click="all" class="current" id="All">All</span><span @click="active" id="Active">Active </span><span @click="completed" id="Completed">Completed</span>
+             </div>
           <div @click="clear" class="bt-rigth">Clear Completed</div>
         </div>
       </div>
@@ -121,7 +123,27 @@ export default {
     clear() {
       localStorage.clear();
       this.toDoList = [];
-      // window.location.reload();
+    },
+    active() {
+      this.toDoList = JSON.parse(localStorage.getItem("todo")) || [];
+      this.toDoList = this.toDoList.filter((todo) => !todo.completed);
+      document.getElementById("Active").classList.add("current");
+      document.getElementById("All").classList.remove("current");
+      document.getElementById("Completed").classList.remove("current");
+     
+    },
+    completed() {
+      this.toDoList = JSON.parse(localStorage.getItem("todo")) || [];
+      this.toDoList = this.toDoList.filter((todo) => todo.completed);
+      document.getElementById("Completed").classList.add("current");
+      document.getElementById("All").classList.remove("current");
+      document.getElementById("Active").classList.remove("current");
+    },
+    all() {
+      this.toDoList = JSON.parse(localStorage.getItem("todo")) || [];
+      document.getElementById("All").classList.add("current");
+      document.getElementById("Completed").classList.remove("current");
+      document.getElementById("Active").classList.remove("current");
     },
   },
 };
