@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "format": "prettier --write \"src/**/*.vue\" \"src/**/*.js\"   \"public/**/*.html\""
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "prettier": "^3.0.3",
     "vue": "^3.2.13"
   },
   "devDependencies": {
